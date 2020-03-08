@@ -31,3 +31,5 @@ D:\БГТУ 2 курс\2 сем\wpf\lesson4MainWindow\Borto\Borto\Borto\bin\Debu
 D:\БГТУ 2 курс\2 сем\wpf\lesson4MainWindow\Borto\Borto\Borto\obj\Debug\Borto.csproj.Fody.CopyLocal.cache
 D:\БГТУ 2 курс\2 сем\wpf\lesson4MainWindow\Borto\Borto\Borto\obj\Debug\Borto.csproj.CopyComplete
 D:\БГТУ 2 курс\2 сем\wpf\lesson4MainWindow\Borto\Borto\Borto\obj\Debug\App.baml
+D:\БГТУ 2 курс\2 сем\wpf\lesson4MainWindow\Borto\Borto\Borto\obj\Debug\Pages\LoginPage.g.cs
+D:\БГТУ 2 курс\2 сем\wpf\lesson4MainWindow\Borto\Borto\Borto\obj\Debug\Pages\LoginPage.baml

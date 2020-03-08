@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\БГТУ 2 курс\2 сем\wpf\lesson4MainWindow\Borto\Borto\Borto\App.xaml
-61138005991
+7550430264
 
-13488055233
+1342251291
 172008938712
-MainWindow.xaml;Styles\Buttons.xaml;Styles\Colors.xaml;Styles\Fonts.xaml;Styles\Texts.xaml;Styles\Windows.xaml;
+MainWindow.xaml;Pages\LoginPage.xaml;Styles\Buttons.xaml;Styles\Colors.xaml;Styles\Fonts.xaml;Styles\Texts.xaml;Styles\Windows.xaml;
 
-True
+False
 
