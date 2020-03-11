@@ -1,10 +1,11 @@
-﻿<local:BasePage x:Class="Borto.LoginPage"
+﻿<local:BasePage x:TypeArguments="local:LoginViewModel" x:Class="Borto.LoginPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Borto"
       mc:Ignorable="d" 
+                x:Name="Page"
       d:DesignHeight="700" d:DesignWidth="700"
       Title="LoginPage">
 
@@ -27,7 +28,7 @@
                         <StackPanel>
 
                             <!--Sign up context-->
-                            <TextBlock Text="Sign Up" 
+                            <TextBlock Text="Sign In" 
                                    FontSize ="{StaticResource FontSizeLarge}" 
                                    FontFamily="{StaticResource LatoRegular}"
                                    Foreground="{StaticResource WordBlueBrush}"
@@ -40,13 +41,18 @@
                                    />
 
                             <!--Email-->
-                            <TextBox Tag="Email"/>
+                            <TextBox Text="{Binding Email}" Tag="Email"/>
 
                             <!--Password-->
-                            <PasswordBox Tag="Password" Margin="0 0 0 30"/>
+                            <PasswordBox x:Name="PasswordText" Tag="Password" Margin="0 0 0 30"/>
 
                             <!--Next button-->
-                            <Button Click="Button_Click"  Content="Next" HorizontalAlignment="Center"/>
+                            <Button Command="{Binding LoginCommand}"
+                                    CommandParameter="{Binding  ElementName=Page}"
+                                    Content="Login" 
+                                    HorizontalAlignment="Center"
+                                    local:IsBusyProperty.Value="{Binding LoginIsRunning}"
+                                    />
                         </StackPanel>
 
                     </Border>

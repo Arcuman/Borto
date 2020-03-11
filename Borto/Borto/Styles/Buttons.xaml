@@ -6,6 +6,7 @@
             <!-- Order is important -->
             <ResourceDictionary Source="Colors.xaml" />
             <ResourceDictionary Source="Fonts.xaml" />
+            <ResourceDictionary Source="Texts.xaml" />
         </ResourceDictionary.MergedDictionaries>
 
     <!-- Hoverless button -->
@@ -91,7 +92,9 @@
         
         <Setter Property="Padding" Value="50 10"/> 
         
-        <Setter Property="Margin" Value="0 10"/> 
+        <Setter Property="Margin" Value="0 10"/>
+
+        <Setter Property="local:IsBusyProperty.Value" Value="False"/>
 
         <Setter Property="Template">
             <Setter.Value>
@@ -102,14 +105,23 @@
                         BorderThickness="{TemplateBinding BorderThickness}" 
                         Background="{TemplateBinding Background}"
                         SnapsToDevicePixels="True">
-                    <TextBlock  Text="{TemplateBinding Content}" 
+                        <Grid>
+                            <TextBlock  Text="{TemplateBinding Content}" 
                                 Focusable="False" 
+                                Visibility="{TemplateBinding local:IsBusyProperty.Value, Converter={local:BooleanToVisibilityConverter}}"
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
                                 Margin="{TemplateBinding Padding}"
                                 FontFamily="{TemplateBinding FontFamily}"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                </Border>
+                            <TextBlock Style="{StaticResource SpinningText}"
+                                FontFamily="{StaticResource FontAwesome}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Visibility="{TemplateBinding local:IsBusyProperty.Value, Converter={local:BooleanToVisibilityConverter},ConverterParameter=true}"
+                                />
+                        </Grid>
+                    </Border>
                     <ControlTemplate.Triggers>
                         <EventTrigger RoutedEvent="MouseEnter">
                             <BeginStoryboard>

@@ -14,8 +14,17 @@ namespace Borto
     /// A base page for all pages to gain functionality
     /// </summary>
 
-    public class BasePage : Page
+    public class BasePage<VM> : Page
+        where VM: BaseViewModel, new()
     {
+        #region Private Member
+        /// <summary>
+        /// The View Model associated with this page
+        /// </summary>
+        private VM mViewModel;
+         
+        #endregion
+
         #region Public Properties
         /// <summary>
         /// The animation the play when the page is first loaded
@@ -32,6 +41,25 @@ namespace Borto
         /// </summary>
         public float SlideSeconds { get; set; } = 0.8f;
 
+        /// <summary>
+        /// The view model associated with this page
+        /// </summary>
+        public VM VIewModel {
+            get => mViewModel;
+            set {
+                //If nothing changed, return 
+                if (mViewModel == value)
+                    return;
+
+                //Update the value
+                mViewModel = value;
+
+                // Set the data context for the page 
+                this.DataContext = mViewModel; 
+            }
+        }
+
+
         #endregion
 
 
@@ -44,9 +72,10 @@ namespace Borto
         {
             //If we are animating in, hide to begin with
             if (PageLoadAnimation != PageAnimation.None)
-            {
                 Visibility = Visibility.Collapsed;
-            }
+
+            //Create a default view model
+            this.VIewModel = new VM();
 
             //Listen out for the page loading 
             Loaded += BasePage_Loaded;
@@ -87,7 +116,6 @@ namespace Borto
                     break;
             }
         }
-
         /// <summary>
         /// Animates the pages out
         /// </summary>
